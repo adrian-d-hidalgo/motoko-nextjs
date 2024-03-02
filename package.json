@@ -5,14 +5,12 @@
     "frontend"
   ],
   "keywords": [
-    "api rest",
-    "azle",
-    "express",
+    "dfinity",
     "icp",
     "internet computer",
+    "motoko",
     "nextjs",
     "react",
-    "rest",
     "typescript"
   ],
   "scripts": {
