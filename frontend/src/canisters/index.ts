@@ -7,5 +7,5 @@ export type CandidActors = {
 };
 
 export let candidCanisters: Record<keyof CandidActors, CandidCanister> = {
-  test: test,
+  test,
 };
