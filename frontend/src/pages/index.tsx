@@ -1,29 +1,87 @@
+import { Identity } from "@dfinity/agent";
+
+import { LogoutButton, useAuth, useCandidActor, useIdentities } from "@bundly/ares-react";
+
 import { CandidActors } from "@app/canisters";
-import { AuthButton, useCandidActor } from "@bundly/ares-react";
+import Header from "@app/components/header";
 
 export default function IcConnectPage() {
-    const backend = useCandidActor<CandidActors>("test") as CandidActors["test"];
+  const { isAuthenticated, currentIdentity, changeCurrentIdentity } = useAuth();
+  const identities = useIdentities();
+  const backend = useCandidActor<CandidActors>("test", currentIdentity) as CandidActors["test"];
 
-    async function whoAmI() {
-        try {
-            const response = await backend.whoAmI();
+  function formatPrincipal(principal: string): string {
+    const parts = principal.split("-");
+    const firstPart = parts.slice(0, 2).join("-");
+    const lastPart = parts.slice(-2).join("-");
+    return `${firstPart}-...-${lastPart}`;
+  }
 
-            console.log({
-                pricipal: response.toString(),
-                isAnonymous: response.isAnonymous(),
-            });
-        } catch (error) {
-            console.error({ error });
-        }
+  function disableIdentityButton(identityButton: Identity): boolean {
+    return currentIdentity.getPrincipal().toString() === identityButton.getPrincipal().toString();
+  }
+
+  async function verifyIdentity() {
+    try {
+      const response = await backend.whoAmI();
+      console.log(
+        "Is the same identity?: ",
+        response.toString() === currentIdentity.getPrincipal().toString()
+      );
+    } catch (error) {
+      console.error({ error });
     }
+  }
 
-    return (
+  return (
+    <>
+      <Header />
+      <main className="p-6">
         <div>
-            <h1>IC Connect</h1>
-            <AuthButton />
-            <div>
-                <button onClick={() => whoAmI()}>Who Am I</button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-8">
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-bold mb-2">User Info</h2>
+              <p className="mt-4 text-sm text-gray-500">
+                <strong>Status:</strong> {isAuthenticated ? "Authenticated" : "Not Authenticated"}
+              </p>
+              <p className="text-gray-700">
+                <strong>Current Identity:</strong> {currentIdentity.getPrincipal().toString()}
+              </p>
+              <button
+                className={"px-3 py-1 text-sm rounded-md bg-blue-500 text-white"}
+                onClick={verifyIdentity}>
+                Verify
+              </button>
             </div>
+
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-bold mb-2">Identities</h2>
+              <ul className="divide-y divide-gray-200">
+                {identities.map((identity, index) => (
+                  <li key={index} className="flex items-center justify-between py-4">
+                    <span className="text-gray-900">
+                      {formatPrincipal(identity.identity.getPrincipal().toString())}
+                    </span>
+                    <div className="flex gap-2">
+                      <button
+                        className={`px-3 py-1 text-sm rounded-md ${
+                          disableIdentityButton(identity.identity)
+                            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            : "bg-blue-500 text-white"
+                        }`}
+                        disabled={disableIdentityButton(identity.identity)}
+                        onClick={() => changeCurrentIdentity(identity.identity)}>
+                        Select
+                      </button>
+                      <LogoutButton identity={identity.identity} />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
-    );
+      </main>
+    </>
+  );
 }
