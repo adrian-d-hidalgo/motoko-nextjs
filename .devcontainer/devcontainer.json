@@ -1,5 +1,5 @@
 {
-  "name": "chain_fusion",
+  "name": "motoko_nextjs",
   "image": "ghcr.io/dfinity/icp-dev-env:7",
   "forwardPorts": [4943],
   "portsAttributes": {

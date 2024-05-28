@@ -4,7 +4,7 @@ This template is designed to easily build applications deployed on ICP using Mot
 
 ## Run in the cloud
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/adrian-d-hidalgo/motoko-nextjs/?quickstart=1)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/adrian-d-hidalgo/motoko-nextjs/?quickstart=1)
 
 ## Run Locally
 
