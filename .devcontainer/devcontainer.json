@@ -1,0 +1,20 @@
+{
+  "name": "motoko_nextjs",
+  "image": "ghcr.io/dfinity/icp-dev-env:7",
+  "forwardPorts": [4943],
+  "postCreateCommand": "npm install",
+  "portsAttributes": {
+    "4943": {
+      "label": "dfx",
+      "onAutoForward": "ignore"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["dfinity-foundation.vscode-motoko", "esbenp.prettier-vscode"]
+    },
+    "codespaces": {
+      "openFiles": ["README.md"]
+    }
+  }
+}
