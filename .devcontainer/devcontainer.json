@@ -1,0 +1,19 @@
+{
+  "name": "chain_fusion",
+  "image": "ghcr.io/dfinity/icp-dev-env:7",
+  "forwardPorts": [4943],
+  "portsAttributes": {
+    "4943": {
+      "label": "dfx",
+      "onAutoForward": "ignore"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["dfinity-foundation.vscode-motoko"]
+    },
+    "codespaces": {
+      "openFiles": ["README.md"]
+    }
+  }
+}

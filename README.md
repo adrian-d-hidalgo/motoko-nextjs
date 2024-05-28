@@ -2,6 +2,10 @@
 
 This template is designed to easily build applications deployed on ICP using Motoko + Next.js + Internet Identity
 
+## Run in the cloud
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/adrian-d-hidalgo/motoko-nextjs/?quickstart=1)
+
 ## Run Locally
 
 Clone the project
@@ -31,7 +35,9 @@ cp frontend/.env-example frontend/.env
 
 Start a ICP local replica:
 
-`dfx start --background --clean`
+```bash
+dfx start --background --clean
+```
 
 Get your canister ids:
 
@@ -60,7 +66,7 @@ NEXT_PUBLIC_INTERNET_IDENTITY_URL=http://YOUR_INTERNET_IDENTITY_CANISTER_ID.loca
 Generate did files:
 
 ```bash
-dfx generate
+dfx generate test
 ```
 
 Deploy your canisters:
