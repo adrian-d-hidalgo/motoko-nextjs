@@ -1,6 +1,6 @@
 {
   "name": "azle-api-rest-nextjs",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "workspaces": [
     "backend",
     "frontend"
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.3.0",
-    "prettier": "^3.2.5",
-    "turbo": "^1.13.3"
+    "prettier": "^3.3.2",
+    "turbo": "^1.13.4"
   }
 }
