@@ -1,8 +1,8 @@
 {
   "name": "motoko_nextjs",
-  "image": "ghcr.io/dfinity/icp-dev-env:7",
+  "build": { "dockerfile": "Dockerfile" },
   "forwardPorts": [4943],
-  "postCreateCommand": "npm install",
+  "onCreateCommand": "nohup bash -c 'npm install && dfx start &'",
   "portsAttributes": {
     "4943": {
       "label": "dfx",
