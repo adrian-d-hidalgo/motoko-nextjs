@@ -20,12 +20,6 @@ Create a .env file:
 cp frontend/.env-codespaces-example frontend/.env
 ```
 
-Start a ICP local replica:
-
-```bash
-dfx start --background --clean
-```
-
 Get environment values:
 
 ```bash
