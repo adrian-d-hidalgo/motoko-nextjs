@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "dfx": "0.20.1",
+  "dfx": "0.22.0",
   "canisters": {
     "test": {
       "type": "motoko",
@@ -28,6 +28,11 @@
           "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
         }
       }
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
     }
   }
 }

@@ -1,3 +1,9 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": false,
+  "editor.tabSize": 2,
+  "[motoko]": {
+    "editor.defaultFormatter": "dfinity-foundation.vscode-motoko"
+  }
 }
